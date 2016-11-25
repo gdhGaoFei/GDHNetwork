@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="umg-3O-yXf">
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="xFg-vx-6cN"/>
+                                </constraints>
+                                <state key="normal" title="block回调数据">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="blockBtnAct:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VIn-Lg-HZP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O55-CE-tY9">
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="hGF-ht-rmR"/>
+                                </constraints>
+                                <state key="normal" title="Delegate回调数据">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="delegateBtnAct:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vhw-BY-Jmu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZE-3S-9uR">
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="lLM-fn-dLZ"/>
+                                </constraints>
+                                <state key="normal" title="SEL回调数据">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="selBtnAct:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Hg-If-MmA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2F6-Xy-e5B">
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="wSq-7s-ydF"/>
+                                </constraints>
+                                <state key="normal" title="上传头像">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="upLoadImageBtnAct:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4ty-5B-S35"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hnk-7o-UdG">
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="iCg-ZU-wpt"/>
+                                </constraints>
+                                <state key="normal" title="上传文件">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="upLoadFileBtnAct:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tMv-Ni-E8A"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AsB-0O-Ol0">
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="HST-Bl-I53"/>
+                                </constraints>
+                                <state key="normal" title="下载文件">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="downLoadFileBtnAct:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E0I-Xh-uVR"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="O55-CE-tY9" firstAttribute="leading" secondItem="umg-3O-yXf" secondAttribute="leading" id="183-WJ-4qF"/>
+                            <constraint firstItem="AsB-0O-Ol0" firstAttribute="leading" secondItem="2F6-Xy-e5B" secondAttribute="leading" id="2sz-9J-yd0"/>
+                            <constraint firstItem="UZE-3S-9uR" firstAttribute="centerX" secondItem="umg-3O-yXf" secondAttribute="centerX" id="2yO-GS-BoI"/>
+                            <constraint firstItem="2F6-Xy-e5B" firstAttribute="top" secondItem="UZE-3S-9uR" secondAttribute="bottom" constant="24" id="49L-zg-fpu"/>
+                            <constraint firstItem="O55-CE-tY9" firstAttribute="top" secondItem="umg-3O-yXf" secondAttribute="bottom" constant="24" id="4Xi-Sd-b7K"/>
+                            <constraint firstItem="2F6-Xy-e5B" firstAttribute="trailing" secondItem="umg-3O-yXf" secondAttribute="trailing" id="53h-8Z-TGG"/>
+                            <constraint firstItem="Hnk-7o-UdG" firstAttribute="top" secondItem="2F6-Xy-e5B" secondAttribute="bottom" constant="24" id="Esj-8h-Zaj"/>
+                            <constraint firstItem="umg-3O-yXf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="Hlp-HF-Tkk"/>
+                            <constraint firstItem="Hnk-7o-UdG" firstAttribute="trailing" secondItem="2F6-Xy-e5B" secondAttribute="trailing" id="Kp3-I7-62S"/>
+                            <constraint firstItem="2F6-Xy-e5B" firstAttribute="centerX" secondItem="umg-3O-yXf" secondAttribute="centerX" id="Pc4-cY-3RH"/>
+                            <constraint firstItem="AsB-0O-Ol0" firstAttribute="trailing" secondItem="2F6-Xy-e5B" secondAttribute="trailing" id="QpQ-dL-MOv"/>
+                            <constraint firstItem="UZE-3S-9uR" firstAttribute="leading" secondItem="umg-3O-yXf" secondAttribute="leading" id="TUh-Ae-68l"/>
+                            <constraint firstItem="AsB-0O-Ol0" firstAttribute="centerX" secondItem="2F6-Xy-e5B" secondAttribute="centerX" id="eek-YK-Eqj"/>
+                            <constraint firstItem="O55-CE-tY9" firstAttribute="trailing" secondItem="umg-3O-yXf" secondAttribute="trailing" id="mN5-Vb-jNV"/>
+                            <constraint firstItem="AsB-0O-Ol0" firstAttribute="top" secondItem="Hnk-7o-UdG" secondAttribute="bottom" constant="24" id="nLQ-z0-auU"/>
+                            <constraint firstItem="UZE-3S-9uR" firstAttribute="top" secondItem="O55-CE-tY9" secondAttribute="bottom" constant="24" id="oa7-YW-GDU"/>
+                            <constraint firstItem="UZE-3S-9uR" firstAttribute="trailing" secondItem="umg-3O-yXf" secondAttribute="trailing" id="syo-H4-WIs"/>
+                            <constraint firstItem="O55-CE-tY9" firstAttribute="centerX" secondItem="umg-3O-yXf" secondAttribute="centerX" id="uqw-qw-tHM"/>
+                            <constraint firstItem="Hnk-7o-UdG" firstAttribute="centerX" secondItem="2F6-Xy-e5B" secondAttribute="centerX" id="vnX-sf-aOr"/>
+                            <constraint firstAttribute="trailing" secondItem="umg-3O-yXf" secondAttribute="trailing" constant="16" id="weL-dG-AcI"/>
+                            <constraint firstItem="Hnk-7o-UdG" firstAttribute="leading" secondItem="2F6-Xy-e5B" secondAttribute="leading" id="xag-ir-0iS"/>
+                            <constraint firstItem="2F6-Xy-e5B" firstAttribute="leading" secondItem="umg-3O-yXf" secondAttribute="leading" id="xcu-Qj-akE"/>
+                            <constraint firstItem="umg-3O-yXf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="36" id="zcd-vz-opI"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="121.88905547226388"/>
+        </scene>
+    </scenes>
+</document>
