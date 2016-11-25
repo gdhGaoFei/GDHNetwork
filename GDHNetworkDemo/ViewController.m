@@ -79,9 +79,9 @@
 /**下载文件*/
 - (IBAction)downLoadFileBtnAct:(id)sender {
     
-    NSString * path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/HYBNetworking.zip"];
+    NSString * path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/GDHNetworkingCaches/GDHNetwork.zip"];
     NSLog(@"文件路径======%@=========", path);
-    [GDHNetworkObject downloadWithUrl:@"https://codeload.github.com/CoderJackyHuang/HYBNetworking/zip/master"
+    [GDHNetworkObject downloadWithUrl:@"https://codeload.github.com/gdhGaoFei/GDHNetwork/zip/master"
                            saveToPath:path
                               showHUD:YES
                              progress:^(int64_t bytesRead, int64_t totalBytesRead, int64_t totalBytesExpectedToRead) {

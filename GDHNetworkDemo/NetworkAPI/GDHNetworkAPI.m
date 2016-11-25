@@ -15,7 +15,7 @@
     NSString * string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSLog(@"%@的json数据结构=============================%@",name,string);
     
-    NSString *fileNmae = [NSString stringWithFormat:@"Documents/%@",fileName];
+    NSString *fileNmae = [NSString stringWithFormat:@"Documents/GDHNetworkingCaches/%@",fileName];
     //创建文本路径
     NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:fileNmae];
     NSLog(@"path is %@",path);
