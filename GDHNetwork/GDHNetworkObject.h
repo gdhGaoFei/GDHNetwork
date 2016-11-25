@@ -4,11 +4,13 @@
 //
 //  Created by 高得华 on 16/10/26.
 //  Copyright © 2016年 GaoFei. All rights reserved.
-//
+
+
+// Github账号:https://github.com/gdhGaoFei/GDHNetwork
 
 #import <Foundation/Foundation.h>
-#import "GDHNetworkDelegate.h"
-#import "GDHNetwork.h"
+#import <UIKit/UIKit.h>
+#import "GDHNetwokOther.h"
 
 @interface GDHNetworkObject : NSObject//网络请求的基类
 

@@ -1,16 +1,26 @@
 //
-//  GDHAsiNetworkDefine.h
-//  GDHNetworking
+//  GDHNetwokOther.h
+//  GDHNetworkDemo
 //
-//  Created by 高得华 on 16/10/26.
+//  Created by 高得华 on 16/11/25.
 //  Copyright © 2016年 GaoFei. All rights reserved.
 //
 
-#ifndef GDHAsiNetworkDefine_h
-#define GDHAsiNetworkDefine_h
-
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+
+#pragma mark ==== 宏定义 =======
+// 项目打包上线都不会打印日志，因此可放心。
+#ifdef DEBUG
+#define DTLog(s, ... ) NSLog( @"[%@ in line %d] ===============>%@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+#else
+#define DTLog(s, ... )
+#endif
+
+#define SHOW_ALERT(_msg_)  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:_msg_ delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];\
+[alert show];
+
+
+#pragma mark ========= // 枚举 及block \\ ===========
 //============== 枚举 ===============
 /**
  *  请求类型
@@ -50,8 +60,8 @@ typedef NS_ENUM(NSInteger, GDHNetworkStatus) {//获取网络的枚举
  *  @param totalBytesExpectedToRead 还有多少需要下载
  */
 typedef void (^GDHDownloadProgress)(int64_t bytesRead,
-                                    int64_t totalBytesRead,
-                                    int64_t totalBytesExpectedToRead);
+int64_t totalBytesRead,
+int64_t totalBytesExpectedToRead);
 
 typedef GDHDownloadProgress GDHGetProgress;
 typedef GDHDownloadProgress GDHPostProgress;
@@ -64,7 +74,7 @@ typedef GDHDownloadProgress GDHPostProgress;
  *  @param totalBytesWritten         总上传大小
  */
 typedef void (^GDHUploadProgress)(int64_t bytesWritten,
-                                  int64_t totalBytesWritten);
+int64_t totalBytesWritten);
 
 
 @class NSURLSessionTask;
@@ -76,10 +86,30 @@ typedef NSURLSessionTask GDHURLSessionTask;
 typedef void(^GDHResponseSuccess)(id returnData);
 typedef void(^GDHResponseFail)(NSError * error);
 
-//正式库 上架时需要URL
-static NSString * const baseURL = @"http://op.juhe.cn/";
 
-//测试库 调试时需要URL
-//static NSString * const baseURL = @"http://op.juhe.cn/";
 
-#endif /* GDHAsiNetworkDefine_h */
+#pragma mark ========  代理  ================
+@protocol GDHNetworkDelegate <NSObject>//请求封装的代理协议
+
+@optional
+/**
+ *   请求结束
+ *
+ *   @param returnData 返回的数据
+ */
+- (void)requestDidFinishLoading:(id)returnData;
+/**
+ *   请求失败
+ *
+ *   @param error 失败的 error
+ */
+- (void)requestdidFailWithError:(NSError*)error;
+
+/**
+ *   网络请求项即将被移除掉
+ *
+ *   @param itme 网络请求项
+ */
+- (void)netWorkWillDealloc:(GDHURLSessionTask *) itme;
+
+@end

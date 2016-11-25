@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GDHNetworkDelegate.h"
-#import "GDHNetwork.h"
+#import "GDHNetwokOther.h"
+@class GDHNetworkObject;
 
 /// 请求管理着
 @interface GDHNetworkManager : NSObject
