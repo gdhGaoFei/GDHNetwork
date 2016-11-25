@@ -11,7 +11,7 @@
 #import "AFNetworking.h"
 #import "AFNetworkActivityIndicatorManager.h"
 #import "MBProgressHUD+Add.h"
-#import <MBProgressHUD.h>
+#import "MBProgressHUD.h"
 
 @interface NSString (md5)
 + (NSString *)hybnetworking_md5:(NSString *)string;
