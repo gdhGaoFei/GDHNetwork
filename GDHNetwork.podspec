@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
                    此网络二次开发是基于AFNetworking3.0以上版本封装的网络层,使用常见的block、代理及SEL方式进行回调数据,提供常用的GET/POST接口、上传下载图片、文件接口、支持缓存等,增加无网络时提示框提醒,还增加了网络监听，MBProgressHUD菊花等
                    DESC
 
-  s.homepage     = "http://EXAMPLE/GDHNetwork"
+  s.homepage     = "https://github.com/gdhGaoFei/GDHNetwork"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -39,7 +39,7 @@ Pod::Spec.new do |s|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  s.license      = "MIT (example)"
+  s.license      = "MIT"
   # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
 
@@ -80,7 +80,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "http://EXAMPLE/GDHNetwork.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/gdhGaoFei/GDHNetwork.git", :tag => s.version.to_s }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -91,10 +91,10 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Classes", "Classes/**/*.{h,m}"
-  s.exclude_files = "Classes/Exclude"
+  s.source_files  = "GDHNetwork/GDHNetwork.h"
+  # s.exclude_files = "Classes/Exclude"
 
-  # s.public_header_files = "Classes/**/*.h"
+  s.public_header_files = "GDHNetwork/GDHNetwork.h"
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -106,7 +106,7 @@ Pod::Spec.new do |s|
   #
 
   # s.resource  = "icon.png"
-  # s.resources = "Resources/*.png"
+  s.resources = "GDHNetwork/images/*.png"
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
@@ -133,6 +133,7 @@ Pod::Spec.new do |s|
   # s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  # s.dependency "JSONKit", "~> 1.4"
+  s.dependency "AFNetworking", "~> 3.1.0"
+  s.dependency "MBProgressHUD", "~> 1.0.0"
 
 end
