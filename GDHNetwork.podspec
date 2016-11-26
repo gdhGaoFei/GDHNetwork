@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "GDHNetwork"
-  s.version      = "0.1.1"
+  s.version      = "0.1.2"
   s.summary      = "GDHNetwork is a high level request util based on AFNetworking."
 
   # This description is used to generate tags and improve search results.
@@ -82,10 +82,10 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "GDHNetwork/GDHNetwork.h"
+  s.source_files  = "GDHNetwork/*.{h,m}"
   # s.exclude_files = "Classes/Exclude"
 
-  s.public_header_files = "GDHNetwork/GDHNetwork/*.h"
+  # s.public_header_files = "GDHNetwork/GDHNetwork/*.h"
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
