@@ -22,7 +22,6 @@
 		A616077B1DE80EA700EE498A /* error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A61607721DE80EA700EE498A /* error@2x.png */; };
 		A616077C1DE80EA700EE498A /* success.png in Resources */ = {isa = PBXBuildFile; fileRef = A61607731DE80EA700EE498A /* success.png */; };
 		A616077D1DE80EA700EE498A /* success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A61607741DE80EA700EE498A /* success@2x.png */; };
-		A616077E1DE80EA700EE498A /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = A61607761DE80EA700EE498A /* MBProgressHUD+Add.m */; };
 		A61607831DE8118300EE498A /* GDHNetworkAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = A61607821DE8118300EE498A /* GDHNetworkAPI.m */; };
 		A61607861DE8259300EE498A /* GDHNetwokOther.m in Sources */ = {isa = PBXBuildFile; fileRef = A61607851DE8259300EE498A /* GDHNetwokOther.m */; };
 		A680EBA41DE9117300A5FD4E /* GDHNetworkHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A680EBA31DE9117300A5FD4E /* GDHNetworkHeader.m */; };
@@ -72,8 +71,6 @@
 		A61607721DE80EA700EE498A /* error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error@2x.png"; sourceTree = "<group>"; };
 		A61607731DE80EA700EE498A /* success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = success.png; sourceTree = "<group>"; };
 		A61607741DE80EA700EE498A /* success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "success@2x.png"; sourceTree = "<group>"; };
-		A61607751DE80EA700EE498A /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
-		A61607761DE80EA700EE498A /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
 		A61607811DE8118300EE498A /* GDHNetworkAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDHNetworkAPI.h; sourceTree = "<group>"; };
 		A61607821DE8118300EE498A /* GDHNetworkAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDHNetworkAPI.m; sourceTree = "<group>"; };
 		A61607841DE8259300EE498A /* GDHNetwokOther.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDHNetwokOther.h; sourceTree = "<group>"; };
@@ -204,8 +201,6 @@
 				A61607841DE8259300EE498A /* GDHNetwokOther.h */,
 				A61607851DE8259300EE498A /* GDHNetwokOther.m */,
 				A61607701DE80EA700EE498A /* images */,
-				A61607751DE80EA700EE498A /* MBProgressHUD+Add.h */,
-				A61607761DE80EA700EE498A /* MBProgressHUD+Add.m */,
 			);
 			path = GDHNetwork;
 			sourceTree = SOURCE_ROOT;
@@ -424,7 +419,6 @@
 				A61607861DE8259300EE498A /* GDHNetwokOther.m in Sources */,
 				A61607831DE8118300EE498A /* GDHNetworkAPI.m in Sources */,
 				A616073D1DE80D6100EE498A /* ViewController.m in Sources */,
-				A616077E1DE80EA700EE498A /* MBProgressHUD+Add.m in Sources */,
 				A61607791DE80EA700EE498A /* GDHNetworkObject.m in Sources */,
 				A680EBA41DE9117300A5FD4E /* GDHNetworkHeader.m in Sources */,
 				A616073A1DE80D6100EE498A /* AppDelegate.m in Sources */,

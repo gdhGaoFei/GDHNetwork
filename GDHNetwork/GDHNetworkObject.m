@@ -10,8 +10,6 @@
 #import <CommonCrypto/CommonDigest.h>
 #import "AFNetworking.h"
 #import "AFNetworkActivityIndicatorManager.h"
-#import "MBProgressHUD+Add.h"
-#import "MBProgressHUD.h"
 
 @interface NSString (md5)
 + (NSString *)hybnetworking_md5:(NSString *)string;
@@ -36,10 +34,15 @@
 
 
 #pragma mark  ========== // 网络的基类 \\ =========
-@interface GDHNetworkObject ()
+@interface GDHNetworkObject ()<MBProgressHUDDelegate>
 
 /**当前网络是否可以使用**/
 @property (nonatomic, assign) BOOL networkError;
+
+/**!
+ * 菊花展示  展示只支持 MBProgressHUD
+ */
+@property (nonatomic, strong) MBProgressHUD * hud;
 
 @end
 
@@ -374,7 +377,7 @@ static inline NSString *cachePath() {
     UIWindow * window = [UIApplication sharedApplication].keyWindow;
     
     if (showHUD) {
-        [MBProgressHUD showMessageWindows:@""];
+        [[GDHNetworkObject sharedInstance].hud showAnimated:YES];
         //[MBProgressHUD showMessageWindows:@"正在加载中..."];
     }
     
@@ -390,9 +393,9 @@ static inline NSString *cachePath() {
             DTLog(@"URLString无效，无法生成URL。可能是URL中有中文，请尝试Encode URL");
             SHOW_ALERT(@"URLString无效，无法生成URL。可能是URL中有中文，请尝试Encode URL");
             if (showHUD) {
-                [MBProgressHUD hideHUDForView:window animated:YES];
-//                [MBProgressHUD hideAllHUDsForView:window animated:YES];
+                [[GDHNetworkObject sharedInstance].hud hideAnimated:YES];
             }
+            failureBlock(nil);
             return nil;
         }
     } else {
@@ -402,8 +405,9 @@ static inline NSString *cachePath() {
             DTLog(@"URLString无效，无法生成URL。可能是URL中有中文，请尝试Encode URL");
             SHOW_ALERT(@"URLString无效，无法生成URL。可能是URL中有中文，请尝试Encode URL");
             if (showHUD) {
-                [MBProgressHUD hideHUDForView:window animated:YES];
+                [[GDHNetworkObject sharedInstance].hud hideAnimated:YES];
             }
+            failureBlock(nil);
             return nil;
         }
     }
@@ -436,13 +440,13 @@ static inline NSString *cachePath() {
                     }
                     
                     if (showHUD) {
-                        [MBProgressHUD hideHUDForView:window animated:YES];
+                        [[GDHNetworkObject sharedInstance].hud hideAnimated:YES];
                     }
-                    
+                    failureBlock(nil);
                     return nil;
                 }else{
                     if (showHUD) {
-                        [MBProgressHUD hideHUDForView:window animated:YES];
+                        [[GDHNetworkObject sharedInstance].hud hideAnimated:YES];
                     }
                     SHOW_ALERT(@"网络连接断开,请检查网络!");
                     failureBlock(nil);
@@ -450,7 +454,7 @@ static inline NSString *cachePath() {
                 }
             }else{
                 if (showHUD) {
-                    [MBProgressHUD hideHUDForView:window animated:YES];
+                    [[GDHNetworkObject sharedInstance].hud hideAnimated:YES];
                 }
                 SHOW_ALERT(@"网络连接断开,请检查网络!");
                 failureBlock(nil);
@@ -487,7 +491,7 @@ static inline NSString *cachePath() {
                                           params:params];
                 }
                 if (showHUD) {
-                    [MBProgressHUD hideHUDForView:window animated:YES];
+                    [[GDHNetworkObject sharedInstance].hud hideAnimated:YES];
                 }
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 [[self allTasks] removeObject:task];
@@ -514,9 +518,8 @@ static inline NSString *cachePath() {
                                                   params:params];
                         }
                         if (showHUD) {
-                            [MBProgressHUD hideHUDForView:window animated:YES];
+                            [[GDHNetworkObject sharedInstance].hud hideAnimated:YES];
                         }
-                        
                     } else {
                         
                         //block
@@ -534,8 +537,9 @@ static inline NSString *cachePath() {
                             [self logWithFailError:error url:absolute params:params];
                         }
                         if (showHUD) {
-                            [MBProgressHUD hideHUDForView:window animated:YES];
+                            [[GDHNetworkObject sharedInstance].hud hideAnimated:YES];
                         }
+                        failureBlock(nil);
                     }
                 } else {
                     //block
@@ -553,7 +557,7 @@ static inline NSString *cachePath() {
                     }
                     
                     if (showHUD) {
-                        [MBProgressHUD hideHUDForView:window animated:YES];
+                        [[GDHNetworkObject sharedInstance].hud hideAnimated:YES];
                     }
                 }
             }];
@@ -585,13 +589,13 @@ static inline NSString *cachePath() {
                     }
                     
                     if (showHUD) {
-                        [MBProgressHUD hideHUDForView:window animated:YES];
+                        [[GDHNetworkObject sharedInstance].hud hideAnimated:YES];
                     }
-                    
+                    failureBlock(nil);
                     return nil;
                 }else{
                     if (showHUD) {
-                        [MBProgressHUD hideHUDForView:window animated:YES];
+                        [[GDHNetworkObject sharedInstance].hud hideAnimated:YES];
                     }
                     SHOW_ALERT(@"网络连接断开,请检查网络!");
                     failureBlock(nil);
@@ -599,7 +603,7 @@ static inline NSString *cachePath() {
                 }
             }else{//=========>不获取
                 if (showHUD) {
-                    [MBProgressHUD hideHUDForView:window animated:YES];
+                    [[GDHNetworkObject sharedInstance].hud hideAnimated:YES];
                 }
                 SHOW_ALERT(@"网络连接断开,请检查网络!");
                 failureBlock(nil);
@@ -643,7 +647,7 @@ static inline NSString *cachePath() {
                 }
                 
                 if (showHUD) {
-                    [MBProgressHUD hideHUDForView:window animated:YES];
+                    [[GDHNetworkObject sharedInstance].hud hideAnimated:YES];
                 }
                 
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -674,7 +678,7 @@ static inline NSString *cachePath() {
                         }
                         
                         if (showHUD) {
-                            [MBProgressHUD hideHUDForView:window animated:YES];
+                            [[GDHNetworkObject sharedInstance].hud hideAnimated:YES];
                         }
                         
                     } else {
@@ -691,7 +695,7 @@ static inline NSString *cachePath() {
                     }
                     
                     if (showHUD) {
-                        [MBProgressHUD hideHUDForView:window animated:YES];
+                        [[GDHNetworkObject sharedInstance].hud hideAnimated:YES];
                     }
                     
                 } else {
@@ -709,7 +713,7 @@ static inline NSString *cachePath() {
                     }
                     
                     if (showHUD) {
-                        [MBProgressHUD hideHUDForView:window animated:YES];
+                        [[GDHNetworkObject sharedInstance].hud hideAnimated:YES];
                     }
                 }
             }];
@@ -1062,27 +1066,26 @@ static inline NSString *cachePath() {
         return nil;
     }
     
-    UIWindow * window = [UIApplication sharedApplication].keyWindow;
-    
     if (showHUD) {
-        [MBProgressHUD showMessageWindows:@""];
-        //[MBProgressHUD showMessageWindows:@"正在加载中..."];
+        [[GDHNetworkObject sharedInstance].hud showAnimated:YES];
     }
     
     if ([self baseUrl] == nil) {
         if ([NSURL URLWithString:url] == nil) {
             DTLog(@"URLString无效，无法生成URL。可能是URL中有中文，请尝试Encode URL");
             if (showHUD) {
-                [MBProgressHUD hideHUDForView:window animated:YES];
+                [[GDHNetworkObject sharedInstance].hud hideAnimated:YES];
             }
+            fail(nil);
             return nil;
         }
     } else {
         if ([NSURL URLWithString:[NSString stringWithFormat:@"%@%@", [self baseUrl], url]] == nil) {
             DTLog(@"URLString无效，无法生成URL。可能是URL中有中文，请尝试Encode URL");
             if (showHUD) {
-                [MBProgressHUD hideHUDForView:window animated:YES];
+                [[GDHNetworkObject sharedInstance].hud hideAnimated:YES];
             }
+            fail(nil);
             return nil;
         }
     }
@@ -1122,7 +1125,7 @@ static inline NSString *cachePath() {
         }
         
         if (showHUD) {
-            [MBProgressHUD hideHUDForView:window animated:YES];
+            [[GDHNetworkObject sharedInstance].hud hideAnimated:YES];
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -1135,8 +1138,9 @@ static inline NSString *cachePath() {
         }
         
         if (showHUD) {
-            [MBProgressHUD hideHUDForView:window animated:YES];
+            [[GDHNetworkObject sharedInstance].hud hideAnimated:YES];
         }
+        fail(nil);
     }];
     
     [session resume];
@@ -1171,18 +1175,16 @@ static inline NSString *cachePath() {
         return nil;
     }
     
-    UIWindow * window = [UIApplication sharedApplication].keyWindow;
-    
     if (showHUD) {
-        [MBProgressHUD showMessageWindows:@""];
-        //[MBProgressHUD showMessageWindows:@"正在加载中..."];
+        [[GDHNetworkObject sharedInstance].hud showAnimated:YES];
     }
     
     if ([NSURL URLWithString:uploadingFile] == nil) {
         DTLog(@"uploadingFile无效，无法生成URL。请检查待上传文件是否存在");
         if (showHUD) {
-            [MBProgressHUD hideHUDForView:window animated:YES];
+            [[GDHNetworkObject sharedInstance].hud hideAnimated:YES];
         }
+        fail(nil);
         return nil;
     }
     
@@ -1196,8 +1198,9 @@ static inline NSString *cachePath() {
     if (uploadURL == nil) {
         DTLog(@"URLString无效，无法生成URL。可能是URL中有中文或特殊字符，请尝试Encode URL");
         if (showHUD) {
-            [MBProgressHUD hideHUDForView:window animated:YES];
+            [[GDHNetworkObject sharedInstance].hud hideAnimated:YES];
         }
+        fail(nil);
         return nil;
     }
     
@@ -1222,9 +1225,9 @@ static inline NSString *cachePath() {
             }
             
             if (showHUD) {
-                [MBProgressHUD hideHUDForView:window animated:YES];
+                [[GDHNetworkObject sharedInstance].hud hideAnimated:YES];
             }
-            
+
         } else {
             if ([self isDebug]) {
                 [self logWithSuccessResponse:responseObject
@@ -1233,8 +1236,9 @@ static inline NSString *cachePath() {
             }
             
             if (showHUD) {
-                [MBProgressHUD hideHUDForView:window animated:YES];
+                [[GDHNetworkObject sharedInstance].hud hideAnimated:YES];
             }
+            fail(nil);
         }
     }];
     
@@ -1246,7 +1250,6 @@ static inline NSString *cachePath() {
 }
 
 /*!
- *  @author 黄仪标, 16-01-08 15:01:11
  *
  *  下载文件
  *
@@ -1266,30 +1269,30 @@ static inline NSString *cachePath() {
     
     if (sg_networkStatus == GDHNetworkStatusNotReachable ||  sg_networkStatus == GDHNetworkStatusUnknown ) {
         SHOW_ALERT(@"网络连接断开,请检查网络!");
+        failure(nil);
         return nil;
     }
     
-    UIWindow * window = [UIApplication sharedApplication].keyWindow;
-    
     if (showHUD) {
-        [MBProgressHUD showMessageWindows:@""];
-        //[MBProgressHUD showMessageWindows:@"正在加载中..."];
+        [[GDHNetworkObject sharedInstance].hud showAnimated:YES];
     }
     
     if ([self baseUrl] == nil) {
         if ([NSURL URLWithString:url] == nil) {
             DTLog(@"URLString无效，无法生成URL。可能是URL中有中文，请尝试Encode URL");
             if (showHUD) {
-                [MBProgressHUD hideHUDForView:window animated:YES];
+                [[GDHNetworkObject sharedInstance].hud hideAnimated:YES];
             }
+            failure(nil);
             return nil;
         }
     } else {
         if ([NSURL URLWithString:[NSString stringWithFormat:@"%@%@", [self baseUrl], url]] == nil) {
             DTLog(@"URLString无效，无法生成URL。可能是URL中有中文，请尝试Encode URL");
             if (showHUD) {
-                [MBProgressHUD hideHUDForView:window animated:YES];
+                [[GDHNetworkObject sharedInstance].hud hideAnimated:YES];
             }
+            failure(nil);
             return nil;
         }
     }
@@ -1309,17 +1312,20 @@ static inline NSString *cachePath() {
         [[self allTasks] removeObject:session];
         
         if (error == nil) {
-            if (success) {
-                success(filePath.absoluteString);
-            }
             
             if ([self isDebug]) {
                 DTLog(@"Download success for url %@",
                           [self absoluteUrlWithPath:url]);
             }
+            
             if (showHUD) {
-                [MBProgressHUD hideHUDForView:window animated:YES];
+                [[GDHNetworkObject sharedInstance].hud hideAnimated:YES];
             }
+            
+            if (success) {
+                success(filePath.absoluteString);
+            }
+            
         } else {
             [self handleCallbackWithError:error fail:failure];
             
@@ -1330,8 +1336,9 @@ static inline NSString *cachePath() {
             }
             
             if (showHUD) {
-                [MBProgressHUD hideHUDForView:window animated:YES];
+                [[GDHNetworkObject sharedInstance].hud hideAnimated:YES];
             }
+            failure(nil);
         }
     }];
     
@@ -1348,6 +1355,26 @@ static inline NSString *cachePath() {
     if ([self.tagrget respondsToSelector:self.select]) {
         [self.tagrget performSelector:@selector(finishedRequest:didFaild:) withObject:data withObject:error];
     }
+}
+
+
+-(MBProgressHUD *)hud {
+    if (_hud == nil) {
+        //x_hud = [[MBProgressHUD alloc] initWithView:[UIApplication sharedApplication].keyWindow];
+        _hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+        // 隐藏时候从父控件中移除
+        _hud.removeFromSuperViewOnHide = YES;
+        // YES代表需要蒙版效果
+        //    hud.dimBackground = YES;
+        _hud.mode = MBProgressHUDModeIndeterminate;
+        _hud.animationType = MBProgressHUDAnimationFade;
+        _hud.delegate = self;
+    }
+    return _hud;
+}
+
+- (void)hudWasHidden:(MBProgressHUD *)hud {
+    self.hud = nil;
 }
 
 @end

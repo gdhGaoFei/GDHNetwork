@@ -11,6 +11,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "GDHNetwokOther.h"
+#import "MBProgressHUD.h"
 
 @interface GDHNetworkObject : NSObject//网络请求的基类
 
@@ -25,10 +26,12 @@
  *  网络请求的委托
  */
 @property (nonatomic, assign) id <GDHNetworkDelegate> delegate;
+
 /**
  *   target
  */
 @property (nonatomic, assign) id tagrget;
+
 /**
  *   action
  */
