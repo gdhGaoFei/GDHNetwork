@@ -8,7 +8,6 @@ s.homepage = 'https://github.com/gdhGaoFei/GDHNetwork'
 s.authors = { 'GaoFei' => 'gdhgaofei@163.com' }
 s.source = { :git => 'https://github.com/gdhGaoFei/GDHNetwork.git', :tag => s.version.to_s }
 s.requires_arc = true
-s.platform     = :ios, "7.0"
 s.ios.deployment_target = '7.0'
 s.source_files = 'GDHNetwork", "*.{h,m}"
 s.resources = 'GDHNetwork/images/*.png'
