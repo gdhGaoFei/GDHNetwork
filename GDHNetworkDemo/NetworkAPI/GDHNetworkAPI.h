@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GDHNetwork.h"
+#import "GDHNetworkHeader.h"
 
 @interface GDHNetworkAPI : NSObject
 

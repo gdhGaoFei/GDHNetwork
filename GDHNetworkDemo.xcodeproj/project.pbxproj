@@ -25,6 +25,7 @@
 		A616077E1DE80EA700EE498A /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = A61607761DE80EA700EE498A /* MBProgressHUD+Add.m */; };
 		A61607831DE8118300EE498A /* GDHNetworkAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = A61607821DE8118300EE498A /* GDHNetworkAPI.m */; };
 		A61607861DE8259300EE498A /* GDHNetwokOther.m in Sources */ = {isa = PBXBuildFile; fileRef = A61607851DE8259300EE498A /* GDHNetwokOther.m */; };
+		A680EBA41DE9117300A5FD4E /* GDHNetworkHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A680EBA31DE9117300A5FD4E /* GDHNetworkHeader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +64,6 @@
 		A61607561DE80D6100EE498A /* GDHNetworkDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GDHNetworkDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A616075A1DE80D6100EE498A /* GDHNetworkDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GDHNetworkDemoUITests.m; sourceTree = "<group>"; };
 		A616075C1DE80D6100EE498A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A616076A1DE80EA700EE498A /* GDHNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDHNetwork.h; sourceTree = "<group>"; };
 		A616076C1DE80EA700EE498A /* GDHNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDHNetworkManager.h; sourceTree = "<group>"; };
 		A616076D1DE80EA700EE498A /* GDHNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDHNetworkManager.m; sourceTree = "<group>"; };
 		A616076E1DE80EA700EE498A /* GDHNetworkObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDHNetworkObject.h; sourceTree = "<group>"; };
@@ -78,6 +78,8 @@
 		A61607821DE8118300EE498A /* GDHNetworkAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDHNetworkAPI.m; sourceTree = "<group>"; };
 		A61607841DE8259300EE498A /* GDHNetwokOther.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDHNetwokOther.h; sourceTree = "<group>"; };
 		A61607851DE8259300EE498A /* GDHNetwokOther.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDHNetwokOther.m; sourceTree = "<group>"; };
+		A680EBA21DE9117300A5FD4E /* GDHNetworkHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDHNetworkHeader.h; sourceTree = "<group>"; };
+		A680EBA31DE9117300A5FD4E /* GDHNetworkHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDHNetworkHeader.m; sourceTree = "<group>"; };
 		AF2090E7C3B09656ACD01AD1 /* Pods-GDHNetworkDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GDHNetworkDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-GDHNetworkDemo/Pods-GDHNetworkDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -193,7 +195,8 @@
 		A61607681DE80EA700EE498A /* GDHNetwork */ = {
 			isa = PBXGroup;
 			children = (
-				A616076A1DE80EA700EE498A /* GDHNetwork.h */,
+				A680EBA21DE9117300A5FD4E /* GDHNetworkHeader.h */,
+				A680EBA31DE9117300A5FD4E /* GDHNetworkHeader.m */,
 				A616076C1DE80EA700EE498A /* GDHNetworkManager.h */,
 				A616076D1DE80EA700EE498A /* GDHNetworkManager.m */,
 				A616076E1DE80EA700EE498A /* GDHNetworkObject.h */,
@@ -423,6 +426,7 @@
 				A616073D1DE80D6100EE498A /* ViewController.m in Sources */,
 				A616077E1DE80EA700EE498A /* MBProgressHUD+Add.m in Sources */,
 				A61607791DE80EA700EE498A /* GDHNetworkObject.m in Sources */,
+				A680EBA41DE9117300A5FD4E /* GDHNetworkHeader.m in Sources */,
 				A616073A1DE80D6100EE498A /* AppDelegate.m in Sources */,
 				A61607781DE80EA700EE498A /* GDHNetworkManager.m in Sources */,
 				A61607371DE80D6100EE498A /* main.m in Sources */,

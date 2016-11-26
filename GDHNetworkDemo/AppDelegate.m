@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "GDHNetwork.h"
+#import "GDHNetworkHeader.h"
 
 @interface AppDelegate ()
 
