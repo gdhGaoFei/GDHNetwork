@@ -373,9 +373,7 @@ static inline NSString *cachePath() {
     object.delegate = delegate;
     object.tagrget  = target;
     object.select   = action;
-    
-    UIWindow * window = [UIApplication sharedApplication].keyWindow;
-    
+        
     if (showHUD) {
         [[GDHNetworkObject sharedInstance].hud showAnimated:YES];
         //[MBProgressHUD showMessageWindows:@"正在加载中..."];
