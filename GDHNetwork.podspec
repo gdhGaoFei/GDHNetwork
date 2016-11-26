@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "GDHNetwork"
-  s.version      = "0.0.6"
+  s.version      = "0.0.8"
   s.summary      = "GDHNetwork is a high level request util based on AFNetworking."
 
   # This description is used to generate tags and improve search results.
@@ -57,7 +57,7 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
- i s.platform     = :ios, "7.0"
+  s.platform     = :ios, "7.0"
 
   #  When using multiple platforms
   s.ios.deployment_target = "7.0"
