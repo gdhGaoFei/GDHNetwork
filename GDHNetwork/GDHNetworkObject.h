@@ -11,7 +11,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "GDHNetwokOther.h"
-#import "MBProgressHUD.h"
 
 @interface GDHNetworkObject : NSObject//网络请求的基类
 
