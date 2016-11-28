@@ -7,6 +7,9 @@ GDHNetwork is is a high level request util based on AFNetworking
 增加无网络时提示框提醒,还增加了网络监听，MBProgressHUD菊花等。
 
 #下载安装
+
+pod 'GDHNetwork'
+
 github网址：
 https://github.com/gdhGaoFei/GDHNetwork.git
 
@@ -15,17 +18,62 @@ QQ联系：964195787
 Demo中已有参考代码，谢谢支持！
 
 #方法
-在使用时直接将其文件中的 GDHNetworkOther.h 写到pch文件中，直接可以调用基类(GDHNetworkObject.h)和管理类(GDHNetworkManager.h)的方法及菊花(MBProgressHUD)
+# 在使用时直接将其文件中的 #import "GDHNetworkHeader.h" 写到pch文件中，直接可以调用基类(#import "GDHNetworkObject.h")和管理类(#import "GDHNetworkManager.h")的方法及菊花(MBProgressHUD)
 
-基类 GDHNetworkObject.h 中涵盖了 
+# 基类 #import "GDHNetworkObject.h" 中涵盖了 
 1.创建网络请求的方法
 2.图片上传、文件上传及下载
 3.取消全部及某个网络请求
 4.网络请求的缓存大小及清理缓存的方法等
 
-管理类 GDHNetworkManager.h 中涵盖了
-1.GET请求的block、delegate、SEL三个方法的请求
-1.POST请求的block、delegate、SEL三个方法的请求
+# 监听网络状态
+[GDHNetworkObject StartMonitoringNetworkStatus:^(GDHNetworkStatus status) {
+switch (status) {
+case GDHNetworkStatusUnknown://未知网络
+DTLog(@"未知网络");
+break;
+case GDHNetworkStatusNotReachable://没有网络
+{
+DTLog(@"网络无连接");
+SHOW_ALERT(@"网络连接断开,请检查网络!");
+}
+break;
+case GDHNetworkStatusReachableViaWWAN:
+DTLog(@"2、3、4G网络");
+break;
+case GDHNetworkStatusReachableViaWiFi:
+DTLog(@"WiFi网络");
+break;
+default:
+break;
+}
+}];
+# 设置网络请求的基础网址
+[GDHNetworkObject updateBaseUrl:baseURL];
+
+# 修改网络请求的缓存路径
+[GDHNetworkObject updateBaseCacheDocuments:@"GDH_123"];
+
+# 获取网络请求的缓存路径
+[GDHNetworkObject baseCache]
+
+# 开启或关闭接口打印信息
+[GDHNetworkObject enableInterfaceDebug:YES];
+
+# 设置请求超时时间
+[GDHNetworkObject setTimeout:15];
+
+# 配置请求和响应类型，由于部分伙伴们的服务器不接收JSON传过去，现在默认值改成了plainText
+[GDHNetworkObject configRequestType:GDHRequestTypeJSON
+responseType:GDHResponseTypeJSON
+shouldAutoEncodeUrl:YES
+callbackOnCancelRequest:NO];
+
+# 设置GET、POST请求都缓存
+[GDHNetworkObject cacheGetRequest:YES shoulCachePost:YES];
+
+
+# 管理类 #import "GDHNetworkManager.h" 中涵盖了   1.GET请求的block、delegate、SEL三个方法的请求  1.POST请求的block、delegate、SEL三个方法的请求  根据自己的需求自行调用
 
 
 
