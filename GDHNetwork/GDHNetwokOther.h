@@ -49,8 +49,16 @@ typedef NS_ENUM(NSInteger, GDHNetworkStatus) {//获取网络的枚举
     GDHNetworkStatusReachableViaWiFi = 2,//WIFI网络
 };
 
-
 //============ blcok ================
+
+/**!
+ 网络监测的block
+ */
+/**!
+ 网络监测的block
+ */
+typedef void (^GDHNetworkStatusBlock) (GDHNetworkStatus status);
+
 /*!
  *
  *  下载进度 get or post

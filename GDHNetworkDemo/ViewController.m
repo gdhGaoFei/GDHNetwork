@@ -79,7 +79,9 @@
 /**下载文件*/
 - (IBAction)downLoadFileBtnAct:(id)sender {
     
-    NSString * path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/GDHNetworkingCaches/GDHNetwork.zip"];
+    DTLog(@"[GDHNetworkObject baseCache] ========%@===========",[GDHNetworkObject baseCache]);
+    
+    NSString * path = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/GDHNetworking.zip",[GDHNetworkObject baseCache]]];//
     NSLog(@"文件路径======%@=========", path);
     [GDHNetworkObject downloadWithUrl:@"https://codeload.github.com/gdhGaoFei/GDHNetwork/zip/master"
                            saveToPath:path

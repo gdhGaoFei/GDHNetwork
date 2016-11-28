@@ -134,9 +134,12 @@
                                failure:(GDHResponseFail)failure;
 
 /**
- *   监听网络状态的变化
+ 监听网络状态的变化
+
+ @param statusBlock 返回网络枚举类型:GDHNetworkStatus
  */
-+ (void)startMonitoringNetwork;
++ (void)StartMonitoringNetworkStatus:(GDHNetworkStatusBlock)statusBlock;
+
 
 /*!
  *
@@ -149,6 +152,22 @@
  */
 + (void)updateBaseUrl:(NSString *)baseUrl;
 + (NSString *)baseUrl;
+
+/**!
+ 项目中默认的网络缓存路径,也可以当做项目中的缓存路线,根据需求自行设置 
+ 默认路径是(GDHNetworkCaches)
+ 格式是:@"Documents/GDHNetworkCaches",只需要字符串即可。
+
+ @param baseCache 默认路径是(GDHNetworkCaches)
+ */
++ (void)updateBaseCacheDocuments:(NSString *)baseCache;
+
+/**!
+ 项目中默认的网络缓存路径,也可以当做项目中的缓存路线,根据需求自行设置
+
+ @return 格式是:@"Documents/GDHNetworkCaches"
+ */
++ (NSString *)baseCache;
 
 /**
  *	设置请求超时时间，默认为60秒

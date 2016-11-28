@@ -47,6 +47,7 @@
 @end
 
 static NSString * sg_privateNetworkBaseUrl = nil;//baseURL
+static NSString * sg_baseCacheDocuments = @"GDHNetworkCaches";//默认的缓存路径
 static BOOL sg_isBaseURLChanged = YES;//是否更换baseURL
 static NSTimeInterval sg_timeout = 60.0f;//默认请求时间为60秒
 static BOOL sg_shoulObtainLocalWhenUnconnected = NO;//检测网络是否异常
@@ -84,6 +85,7 @@ static AFHTTPSessionManager *sg_sharedManager = nil;
     self = [super init];
     if (self) {
         self.networkError = NO;
+        cachePath();
     }
     return self;
 }
@@ -110,6 +112,33 @@ static AFHTTPSessionManager *sg_sharedManager = nil;
     return sg_privateNetworkBaseUrl;
 }
 
+/**!
+ 项目中默认的网络缓存路径,也可以当做项目中的缓存路线,根据需求自行设置
+ 默认路径是(GDHNetworkCaches)
+ 格式是:@"Documents/GDHNetworkCaches",只需要字符串即可。
+ 
+ @param baseCache 默认路径是(GDHNetworkCaches)
+ */
++ (void)updateBaseCacheDocuments:(NSString *)baseCache {
+    if (baseCache != nil && baseCache.length > 0) {
+        sg_baseCacheDocuments = baseCache;
+        if (![[NSFileManager defaultManager] fileExistsAtPath:cachePath() isDirectory:nil]) {
+            [[NSFileManager defaultManager] createDirectoryAtPath:cachePath()
+                                      withIntermediateDirectories:YES
+                                                       attributes:nil
+                                                            error:nil];
+        }
+    }
+}
+/**!
+ 项目中默认的网络缓存路径,也可以当做项目中的缓存路线,根据需求自行设置
+ 
+ @return 格式是:@"Documents/GDHNetworkCaches"
+ */
++ (NSString *)baseCache {
+    return [NSString stringWithFormat:@"Documents/%@",sg_baseCacheDocuments];
+}
+
 /**
  *	设置请求超时时间，默认为60秒
  *
@@ -129,7 +158,7 @@ static AFHTTPSessionManager *sg_sharedManager = nil;
 + (void)obtainDataFromLocalWhenNetworkUnconnected:(BOOL)shouldObtain{
     sg_shoulObtainLocalWhenUnconnected = shouldObtain;
     if (sg_shoulObtainLocalWhenUnconnected && (sg_cacheGet || sg_cachePost)) {
-        [self startMonitoringNetwork];
+        [self StartMonitoringNetworkStatus:nil];
     }
 }
 
@@ -307,9 +336,18 @@ static AFHTTPSessionManager *sg_sharedManager = nil;
 }
 
 /**
- *   监听网络状态的变化
+ 监听网络状态的变化
+ 
+ @param statusBlock 返回网络枚举类型:GDHNetworkStatus
  */
-+ (void)startMonitoringNetwork {
++ (void)StartMonitoringNetworkStatus:(GDHNetworkStatusBlock)statusBlock {
+    if (![[NSFileManager defaultManager] fileExistsAtPath:cachePath() isDirectory:nil]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:cachePath()
+                                  withIntermediateDirectories:YES
+                                                   attributes:nil
+                                                        error:nil];
+    }
+    
     AFNetworkReachabilityManager *reachabilityManager = [AFNetworkReachabilityManager sharedManager];
     
     [reachabilityManager startMonitoring];
@@ -317,26 +355,39 @@ static AFHTTPSessionManager *sg_sharedManager = nil;
         if (status == AFNetworkReachabilityStatusNotReachable){//网络无连接
             sg_networkStatus = GDHNetworkStatusNotReachable;
             [GDHNetworkObject sharedInstance].networkError = YES;
-            DTLog(@"网络无连接");
-            SHOW_ALERT(@"网络连接断开,请检查网络!");
+//            DTLog(@"网络无连接");
+            //SHOW_ALERT(@"网络连接断开,请检查网络!");
+            if (statusBlock) {
+                statusBlock (sg_networkStatus);
+            }
         } else if (status == AFNetworkReachabilityStatusUnknown){//未知网络
             sg_networkStatus = GDHNetworkStatusUnknown;
             [GDHNetworkObject sharedInstance].networkError = NO;
-            DTLog(@"未知网络");
+//            DTLog(@"未知网络");
+            if (statusBlock) {
+                statusBlock (sg_networkStatus);
+            }
         } else if (status == AFNetworkReachabilityStatusReachableViaWWAN){//2，3，4G网络
             sg_networkStatus = GDHNetworkStatusReachableViaWWAN;
             [GDHNetworkObject sharedInstance].networkError = NO;
-            DTLog(@"2，3，4G网络");
+//            DTLog(@"2，3，4G网络");
+            if (statusBlock) {
+                statusBlock (sg_networkStatus);
+            }
         } else if (status == AFNetworkReachabilityStatusReachableViaWiFi){//WIFI网络
             sg_networkStatus = GDHNetworkStatusReachableViaWiFi;
             [GDHNetworkObject sharedInstance].networkError = NO;
-            DTLog(@"WIFI网络");
+//            DTLog(@"WIFI网络");
+            if (statusBlock) {
+                statusBlock (sg_networkStatus);
+            }
         }
     }];
 }
+
 //获取默认缓存位置
 static inline NSString *cachePath() {
-    return [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/GDHNetworkingCaches"];
+    return [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/%@",sg_baseCacheDocuments]];
 }
 
 

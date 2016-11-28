@@ -27,9 +27,31 @@ static NSString * const baseURL = @"http://op.juhe.cn/";
     // Override point for customization after application launch.
     
     //监听网络状态
-    [GDHNetworkObject startMonitoringNetwork];
+    //[GDHNetworkObject startMonitoringNetwork];
+    [GDHNetworkObject StartMonitoringNetworkStatus:^(GDHNetworkStatus status) {
+        switch (status) {
+            case GDHNetworkStatusUnknown://未知网络
+                DTLog(@"未知网络");
+                break;
+            case GDHNetworkStatusNotReachable://没有网络
+            {
+                DTLog(@"网络无连接");
+                SHOW_ALERT(@"网络连接断开,请检查网络!");
+            }
+                break;
+            case GDHNetworkStatusReachableViaWWAN:
+                DTLog(@"2、3、4G网络");
+                break;
+            case GDHNetworkStatusReachableViaWiFi:
+                DTLog(@"WiFi网络");
+                break;
+            default:
+                break;
+        }
+    }];
     //设置网络问题
     [GDHNetworkObject updateBaseUrl:baseURL];
+//    [GDHNetworkObject updateBaseCacheDocuments:@"GDH_123"];
     [GDHNetworkObject enableInterfaceDebug:YES];
     [GDHNetworkObject setTimeout:15];
     // 配置请求和响应类型，由于部分伙伴们的服务器不接收JSON传过去，现在默认值改成了plainText
@@ -39,7 +61,7 @@ static NSString * const baseURL = @"http://op.juhe.cn/";
                 callbackOnCancelRequest:NO];
     // 设置GET、POST请求都缓存
     [GDHNetworkObject cacheGetRequest:YES shoulCachePost:YES];
-    [GDHNetworkObject obtainDataFromLocalWhenNetworkUnconnected:YES];
+//    [GDHNetworkObject obtainDataFromLocalWhenNetworkUnconnected:YES];
     
     return YES;
 }
