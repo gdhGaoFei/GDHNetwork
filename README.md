@@ -103,13 +103,3 @@ if (sg_cacheGet) {
 if (sg_cachePost) {
 [self cacheResponseObject:responseObject request:absolute  parameters:params];
 }
-
-再次感谢两位
-HYBNetworking的网址：
-https://github.com/CoderJackyHuang/HYBNetworking.git
-
-超强 AFN 封装的网址：
-http://code.cocoachina.com/view/128499
-
-
-如有不适当之处，请相告，尽快下架！
